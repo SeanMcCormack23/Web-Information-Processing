@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link href="style1.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<br><br><br><br>
+
+<table id="table" >
+<thead>
+    <tr>
+        <th>Name: </th>
+        <th>ID:</th>
+        <th>Assignment 1</th>
+        <!--<th>Assignment 2</th>-->
+        <th> Final Grade </th>
+    </tr>
+</thead>
+    <tbody>
+    <tr>
+        <td contenteditable="true">stephen</td>
+        <td contenteditable="true">0001</td>
+        <!--<td contenteditable="true">-</td>-->
+        <td contenteditable="true">-</td>
+        <td>-</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<button id="avg" onClick="avg();"> Calculate AVG</button>
+<button id="btn1" onClick="addRow();" >Add Row</button>
+<button id="btn2" onClick="addCol();" >Add Col</button>
+<button id="createCookie" onClick="createCookie();">Save to Cookie</button>
+<button id="deleteCookie" onClick="deleteCookie();"> Delete Cookie</button>
+<button id="showCookie" onClick="showCookie();"> Show Cookie</button>
+
+<button onClick="retrieveCookie();" > Retrieve</button>
+<script src="main.js" ></script>
+</body>
+</html>
