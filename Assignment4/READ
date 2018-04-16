@@ -1,0 +1,8 @@
+Q.
+-Create a Yoga Quiz using a scripting language of your choosing. 
+-It must contain 10 yoga cards using both sanskrit and english.
+-Users should enter their name the first time they take the quiz, and be remembered on subsequent session visits.
+-Users should be presented with a minimum of 5 questions per session,
+and a running total of how many correct answers entered should be maintained for the session.
+
+This was created in PHP.
