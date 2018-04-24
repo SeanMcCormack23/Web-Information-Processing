@@ -1,4 +1,5 @@
 <?php
+//connection
 $servername = 'localhost';
 $db = 'Assignment4';
 $username = 'root';
@@ -12,10 +13,12 @@ $conn = mysqli_connect($servername,$username,$password);
 	echo "<script>console.log('Connected sucessfully')</script>";
 
 session_start();
+//sets variables to be overwritten to nothing
 
 $_SESSION['name']='';
 $_SESSION['username']='';
 
+//sets name
 if($_SESSION['username']=='' || $_SESSION['username']==null){
 $_SESSION['username'] = $_POST['username'];
 $username = $_SESSION['username'];
@@ -27,7 +30,7 @@ $name = $_SESSION['name'];
 
 
 }
-
+//creates array of 0's for getting the random quiz questions later
  $idArray= array(0,0,0,0,0);
 $_SESSION['arrayOfId'] = $idArray;
 
