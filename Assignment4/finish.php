@@ -1,6 +1,7 @@
 <?php
-
+//starts the session
 session_start();
+//stores details
 $score= $_SESSION['score'];
 $name = $_SESSION['name'];
 
@@ -25,22 +26,24 @@ echo "<html>
 </html>
 
 ";
-
+//creates an array of the name and score
 $array = array (
 	'name'=>$name,
 	'score'=>$score
 );
+//uses the username as an identifier on the json file
 $user = $_SESSION['username'];
 
+//loads it
 $json = json_decode(file_get_contents("data.json"),true);
 
 $json[$user]= array("name"=>$name,"score"=>$score);
 
 
-
+//pushes to decoded json
 array_push($json,$json[$user]);
 
-
+//puts and encodes
 file_put_contents("data.json", json_encode($json));
 
 session_write_close();
