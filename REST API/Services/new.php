@@ -6,10 +6,6 @@ include 'connection.php';
 $method= $_SERVER['REQUEST_METHOD'];
 
 
-
-
-
-
 $data = file_get_contents('php://input'); // this is the data sent from AJAX.
 $data = json_decode($data);
 
