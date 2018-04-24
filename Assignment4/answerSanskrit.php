@@ -1,7 +1,7 @@
 <?php
 
 
-
+//same as other file with different redirect, would of sent the type with the answer for efficiency but ran out of time
 session_start();
 
 $finalanswer= $_POST['answer'];
