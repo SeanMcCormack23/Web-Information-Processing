@@ -99,33 +99,33 @@ $result = mysqli_query($conn,$sql);
 
 
 while($row=mysqli_fetch_assoc($result)){
-//collect the image
-$image= '<img src="data:SplitsFlow/jpeg;base64,' . base64_encode( $row['Image'] ) . '" />';
-//collect information based on the ID
-$correct= $row['Correct'] ;
-$wrong1 = $row['Wrong1'];
-$wrong2 = $row['Wrong2'];
-$wrong3 = $row['Wrong3'];
+	//collect the image
+	$image= '<img src="data:SplitsFlow/jpeg;base64,' . base64_encode( $row['Image'] ) . '" />';
+	//collect information based on the ID
+	$correct= $row['Correct'] ;
+	$wrong1 = $row['Wrong1'];
+	$wrong2 = $row['Wrong2'];
+	$wrong3 = $row['Wrong3'];
 
-//put the answers into an array
-$array = array($correct,$wrong1,$wrong2,$wrong3);
-//creates an array of booleans
-$arraySlot = array(false,false,false,false);
+	//put the answers into an array
+	$array = array($correct,$wrong1,$wrong2,$wrong3);
+	//creates an array of booleans
+	$arraySlot = array(false,false,false,false);
 
-//sets the correct answer for this question
-$_SESSION['correctAnswer'] = $correct;
-$i = 0;
+	//sets the correct answer for this question
+	$_SESSION['correctAnswer'] = $correct;
+	$i = 0;
 
-//while there is another number due
-while($arraySlot[0]==false || $arraySlot[1]==false || $arraySlot[2]==false || $arraySlot[3] == false ){
-//get the random answer for the random slot in the multiple choice quiz
-$randomSlot = rand(0,3);
-if($arraySlot[$randomSlot]==false){
-	//gets the random slot
-	${"random".$i} = $array[$randomSlot];
-	$i+=1;
-	$arraySlot[$randomSlot] = true;
-}
+	//while there is another number due
+		while($arraySlot[0]==false || $arraySlot[1]==false || $arraySlot[2]==false || $arraySlot[3] == false ){
+			//get the random answer for the random slot in the multiple choice quiz
+			$randomSlot = rand(0,3);
+			if($arraySlot[$randomSlot]==false){
+			//gets the random slot
+			${"random".$i} = $array[$randomSlot];
+			$i+=1;
+			$arraySlot[$randomSlot] = true;
+	}
 
 
 }
@@ -156,8 +156,6 @@ $random3<input type='radio' name='answer' value='$random3'> <br><br>
 </form>
 
 <br><br><br><br>
-
-
 
 <p>$name is currently signed in. </p>
 <form action='login.php' method='POST'>
