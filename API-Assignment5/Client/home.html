@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div id='all'>
+	<br><br><br>
+
+	<form id='form1' method='POST'  >
+		Create
+		Name <input type='text' name='name'><br>
+		URL <input type='text' name='URL'><br>
+		Description <input type='text' name='description'><br>
+
+		<button type='submit' name='submit'> Submit </button>
+	</form><br><br>
+
+	<form id='formUpdate' method='POST'  >
+		Create
+		Name <input type='text' name='nameUpdate'><br>
+		URL <input type='text' name='URLUpdate'><br>
+		Description <input type='text' name='descriptionUpdate'><br>
+		ID <input type="text" name="idUpdate"><br>
+
+		<button type='submit' name='submit'> Submit </button>
+	</form><br><br>
+	
+
+
+<form id='formDelete' method='POST'>
+
+	Delete <br>
+	<input type='text' name='idDelete'>
+
+	<button type='submit' name='submitDelete'> Delete </button>
+</form>
+
+
+<br><br>
+
+<form id='formView' method='POST'>
+View <br>
+	<input type='text' name='IDView'>
+
+	<button type='submit' name='submitView'> View </button>
+</form>
+
+<form id='dataBack' method='POST'>
+	<button type='button' name='getBack'> Get Back </button>
+</form>
+</div>
+
+
+<div id='demo1'> </div>
+<table id='table'>
+	<thead>
+		<tr>
+			<th> Name </th>
+			<th> Date </th>
+			<th> URL </th>
+			<th> Description </th>
+		</tr>
+	</thead>
+
+</table>
+
+</div>
+<script src='transfer.js'></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+body {
+	background-color: lightblue;
+}
+#all{
+	margin:auto;
+	width:50%;
+	text-align: center;
+	background-color: rgba(0,0,255,0.2);
+}
+table{
+	width:100%;
+	margin:auto;
+	text-align: center;
+	color:darkblue;
+	border:0.5px solid black;
+}
