@@ -1,4 +1,5 @@
 <?php
+//connection
 $servername = 'localhost';
 $db = 'Assignment4';
 $username = 'root';
@@ -13,27 +14,29 @@ $conn = mysqli_connect($servername,$username,$password);
 
 
 
-
+//session starts
 session_start();
 
-
+//counts down from 5
 $_SESSION['length']+=1;
 
+//checks name
 if($_SESSION['username']=='' || $_SESSION['username']==null){
 $_SESSION['username'] = $_POST['username'];
 echo "found";
 }
-
+//if the game refreshes are less than 5, otherwise go to end
 if($_SESSION['length']>5){
 	$redirect = "http://localhost:8080/Assignment4/finish.php";
 	 header('Location: '.$redirect);
 
 
 }
+//next
 else {
 
 $collector;
-
+//checks name on refresh
  if(isset($_POST['name'])){
 	$_SESSION['name'] = $_POST['name'];
 
@@ -45,37 +48,29 @@ else {
 
 
 
-
-
-
-
-
-
+//makes sure that the same questions dont get asked twice during the quiz
 if($_SESSION['arrayOfId'][0]==0 || $_SESSION['arrayOfId'][1]==0 || $_SESSION['arrayOfId'][2]==0 || $_SESSION['arrayOfId'][3]==0 || $_SESSION['arrayOfId'][4]==0 ){
 
 	$rand = rand(0,4);
 	
 	
 	if ($_SESSION['arrayOfId'][$rand]==0){
-echo "the number is set to ";
-echo $rand;
-echo "<br>";
+
 	$sql = "SELECT * from $db.Assignment4 WHERE ID=$rand";
 	$_SESSION['arrayOfId'][$rand]=1;
 	
 	}
 	else {
-
+	//if the same question appears, get a different one until its unique
 	if ($_SESSION['arrayOfId'][$rand]==1){
-		echo "while loop";
+		
 		$rand = rand(0,4);
 		while ($_SESSION['arrayOfId'][$rand]==1){
 			$rand = rand(0,4);
 		}
-
+		//when its unique
 		if ($_SESSION['arrayOfId'][$rand]==0){
-			echo "final transition";
-			echo $rand;
+			
 			$sql = "SELECT * from $db.Assignment4 WHERE ID=$rand";
 			$_SESSION['arrayOfId'][$rand]=1;
 			}
@@ -85,61 +80,48 @@ echo "<br>";
 
 }
 	
-echo $rand;
-
-	
-
-
-
-
-
-
-
+//result of sql
 $result = mysqli_query($conn,$sql);
 
 
 
-while($row=mysqli_fetch_assoc($result)){
+		while($row=mysqli_fetch_assoc($result)){
+		//gets images
+		$image= '<img src="data:SplitsFlow/jpeg;base64,' . base64_encode( $row['Image'] ) . '" />';
+		//gets answers from phpmyadminrow
+		$correct= $row['CorrectSanskrit'] ;
+		$wrong1 = $row['WrongSanskrit1'];
+		$wrong2 = $row['WrongSanskrit2'];
+		$wrong3 = $row['WrongSanskrit3'];
+		//stores the answers
+		$array = array($correct,$wrong1,$wrong2,$wrong3);
+		// boolean array to make sure same random answers are not used
+		$arraySlot = array(false,false,false,false);
 
-$image= '<img src="data:SplitsFlow/jpeg;base64,' . base64_encode( $row['Image'] ) . '" />';
+		//collects right answer
+		$_SESSION['correctAnswer'] = $correct;
+		$i = 0;
+				//slots them randomly without repeart
+				while($arraySlot[0]==false || $arraySlot[1]==false || $arraySlot[2]==false || $arraySlot[3] == false ){
 
-$correct= $row['CorrectSanskrit'] ;
-$wrong1 = $row['WrongSanskrit1'];
-$wrong2 = $row['WrongSanskrit2'];
-$wrong3 = $row['WrongSanskrit3'];
+				$randomSlot = rand(0,3);
+				if($arraySlot[$randomSlot]==false){
 
-$array = array($correct,$wrong1,$wrong2,$wrong3);
-$arraySlot = array(false,false,false,false);
+					${"random".$i} = $array[$randomSlot];
+					$i+=1;
+					$arraySlot[$randomSlot] = true;
+				}
 
 
-$_SESSION['correctAnswer'] = $correct;
-$i = 0;
-
-while($arraySlot[0]==false || $arraySlot[1]==false || $arraySlot[2]==false || $arraySlot[3] == false ){
-
-$randomSlot = rand(0,3);
-if($arraySlot[$randomSlot]==false){
-	
-	${"random".$i} = $array[$randomSlot];
-	$i+=1;
-	$arraySlot[$randomSlot] = true;
 }
 
 
-}
-// echo $random0."<br>";
-// echo $random1."<br>";
-// echo $random2."<br>";
-// echo $random3."<br>";
 
 
-
-
-//$answer = $row['Correct'];
 }
 
 
-echo "<script> console.log('$correct');</script>";
+
 
 echo "<html>
 <head>
@@ -181,31 +163,15 @@ if (isset($_REQUEST['cardSubmit'])){
 	echo "<script> console.log('your answer is ');</script>";
 	echo "<script> console.log('$answer');</script>";
 
-
-
-
-
 	if($answer==$correct){
 
  		echo "<script> alert('yay');</script>";
 		$_SESSION['score']+=1;
 	}
 	
-	
-	
-	//$redirect = "http://localhost/Assignment4/card.php";
-	//header('Location:'.$redirect);
 
 }
 
-
-
-
-
-	// if (isset($_REQUEST['logout'])){
-	// 	$redirect = "http://localhost:8080/Assignment4/login.php";
-	// header('Location: '.$redirect);
-	// }
 	
 $scoreNow = $_SESSION['score'];
 echo "Your score is ".$scoreNow;
@@ -214,12 +180,3 @@ echo "Your score is ".$scoreNow;
 mysqli_close($conn);
 
 ?>
-
-
-
-
-
-
-
-
-

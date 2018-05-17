@@ -1,6 +1,6 @@
 <?php
 
-
+//starts session
 session_start();
 
 echo "<html>
@@ -44,6 +44,7 @@ randomly-generated answer does not appear twice on a question.<br>The same quest
 
 ";
 
+//initialises the variables needed later
 $_SESSION['quizLength']=0;
 $_SESSION['score']= 0;
 

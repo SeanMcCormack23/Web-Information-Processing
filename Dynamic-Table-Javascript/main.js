@@ -1,5 +1,12 @@
-//var rows = document.getElementById('table').rows.length;
-//var table = document.getElementById('table');
+
+
+
+
+/*
+    Q. Make a table that dynamically adds rows and columns
+    - Has to calculate average and act accordingly when avg. is lower than 40.
+    - has to store the information using cookies and reload it on a refresh.
+*/
 var counter_rows= 0;
 var counter_cells=0;
 function start (show) {
@@ -47,13 +54,16 @@ function start (show) {
 
     }
 }
+//run this on load, false means not showing the answer.
 start(false);
 
+//displays
 function display (i,cells,sum){
 
     document.getElementById('table').rows[i].cells[cells-1].innerHTML=Math.round(sum)+"%";
 }
 
+//adds rows
 function addRow() {
 
     var rows = document.getElementById('table').rows.length;
@@ -66,13 +76,14 @@ function addRow() {
                 extraCell.setAttribute('contentEditable', 'true');
             }
     }
+    //shows the avg.
    start(true);
 }
-
+//avg function
 function avg () {
     start(true);
 }
-
+//add columns
 function addCol(){
     var rows = document.getElementById('table').rows.length;
     var cells = document.getElementById('table').rows[0].cells.length;
@@ -87,6 +98,7 @@ function addCol(){
 
     start(true);
 }
+//create the cookie to be used
 function createCookie () {
 
     var rows = document.getElementById('table').rows.length;
@@ -105,6 +117,7 @@ function createCookie () {
     }
 
 }
+//delete the cookie from local storage
 function deleteCookie() {
     var rows = document.getElementById('table').rows.length;
     var cells = document.getElementById('table').rows[0].cells.length;
@@ -117,6 +130,7 @@ function deleteCookie() {
         }
     }
 }
+//retrieve the cookie based on the name:value pair received
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -189,7 +203,7 @@ function retrieveCookie() {
     avg(true);
 
 }
-// try get this to make the table again
+//aligns the table to the right
 function align () {
     var rows = document.getElementById('table').rows.length;
     var cells = document.getElementById('table').rows[0].cells.length;
@@ -204,7 +218,7 @@ function align () {
         }
     }
 }
-
+//shows the reloaded table by using cookies
 function showCookie ()
 {
     console.log(document.cookie);
@@ -218,6 +232,7 @@ table.deleteRow(r);
 start(row);
 
 }
+//deletes column
 
 function deleteCol{
 var table = document.getElementById('table');
