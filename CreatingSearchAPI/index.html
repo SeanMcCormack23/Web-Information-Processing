@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contacts</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class = "jumbotron text-center"> 
+		<h1>Contacts</h1></div>
+		<nav class="navbar navbar-default">
+  			<div class="container-fluid">
+   			 
+   			 <ul class="nav navbar-nav">
+   			 	<li><a class = "active" href="index.html">Home</a></li>
+    			  <li ><a href="contacts.html">Contacts</a></li>
+    			  <li> <a href="search.html"> Search </a></li>
+      
+   			 </ul>
+ 		 </div>
+		</nav>
+	<form id="form1" action="contacts.php" method="GET">
+	<button type="submit"> Get Contacts </button>
+</form>
+
+<form id="form2" action="contacts.php" method="POST">
+	First Name: <input type="text" name="FirstName"><br>
+	Last Name: <input type="text" name="LastName"><br>
+	Phone : <input type="number" name="PhoneNumber"><br>
+	Street: <input type="text" name="Street"><br>
+	Address: <input type="text" name="Address"><br>
+	Town: <input type="text" name="Town"><br>
+	County: <input type="text" name="County"><br>
+	Country : <input type="text" name="Country"><br>
+	Website: <input type="text" name="Website"><br>
+	<button type="submit" id="submitPost"> Submit </button>
+</form>
+
+
+
+
+
+
+</body>
+</html>
