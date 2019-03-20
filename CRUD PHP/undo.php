@@ -11,7 +11,9 @@
 	}
 
 
+// $_SESSION['KEY'] is the most important thing here. 
 
+// WHen you click delete in the delete.php, it stores $_SESSION['KEY'] as the word "delete".
 
 
 
