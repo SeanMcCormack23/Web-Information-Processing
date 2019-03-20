@@ -45,6 +45,7 @@
 
 
 	else if($_SESSION["key"]=='delete'){
+		// this is coming from delete.php, when its deleted, it stores this stuff and then you access it now. 
 
 	$id = $_SESSION["deletedID"];
 	$creator = $_SESSION["deletedCreator"];
@@ -65,7 +66,7 @@
 	} 
 	else if ($_SESSION["key"]=="update"){
 
-
+	
 	$id = $_SESSION["updatedID"];
 	$creator = $_SESSION["updatedCreator"];
 	$title = $_SESSION["updatedTitle"];
